@@ -8,7 +8,4 @@ if [ "${KEY}" = "" ]; then
     exit 1
 fi
 
-gpg2 --keyserver keyserver.ubuntu.com --recv "${KEY}"
 gpg2 --export --armor "${KEY}" > public.asc
-bin/export-public-key.sh "${KEY}"
-gpg2 --delete-key "${KEY}"
