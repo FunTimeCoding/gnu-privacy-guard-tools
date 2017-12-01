@@ -1,4 +1,4 @@
-# GpgTools
+# GnuPrivacyGuardTools
 
 ## Usage
 
@@ -7,7 +7,7 @@ This section explains how to use this project.
 Run the main program.
 
 ```sh
-bin/gt
+bin/gpgt
 ```
 
 

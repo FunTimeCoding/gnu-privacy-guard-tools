@@ -36,5 +36,5 @@ Notable changes to this project are documented here.
 - Thing that was added.
 
 
-[Unreleased]: https://github.com/FunTimeCoding/gpg-tools/compare/v0.0.2...HEAD
-[0.0.2]: https://github.com/FunTimeCoding/gpg-tools/compare/v0.0.1...v0.0.2
+[Unreleased]: https://github.com/FunTimeCoding/gnu-privacy-guard-tools/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/FunTimeCoding/gnu-privacy-guard-tools/compare/v0.0.1...v0.0.2
