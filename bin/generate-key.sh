@@ -37,7 +37,7 @@ while true; do
     esac
 done
 
-if [ ! -f tmp/settings.txt ]; then
+if [ ! -f "${SCRIPT_DIRECTORY}/../tmp/settings.txt" ]; then
     if [ "${COMMENT}" = '' ]; then
         if [ "${TYPE}" = signature ]; then
             COMMENT="${PURPOSE} signature key"
@@ -69,7 +69,7 @@ Name-Real: ${REAL_NAME}
 Name-Comment: ${COMMENT}
 Name-Email: ${EMAIL}
 Expire-Date: 1y
-Passphrase: example" > tmp/settings.txt
+Passphrase: example" > "${SCRIPT_DIRECTORY}/../tmp/settings.txt"
 fi
 
 mkdir -p "${SCRIPT_DIRECTORY}/../tmp"
