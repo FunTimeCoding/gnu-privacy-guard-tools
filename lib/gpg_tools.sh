@@ -49,3 +49,8 @@ if [ "${KEY_SERVER}" = '' ]; then
 
     exit 1
 fi
+
+# TODO: Figure out how to create ~/.gnupg non-interactively before everything else.
+#if [ ! -d "${HOME}/.gnupg" ]; then
+#    gpg --quiet --batch
+#fi
