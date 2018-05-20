@@ -91,7 +91,7 @@ if [ "${CONFIRM}" = true ]; then
 fi
 
 if [ "${VIRTUAL}" = true ]; then
-    # Fails because
+    # May fail because no hardware RNG device is available.
     sudo apt-get --quiet 2 install rng-tools || true
     sudo rngd -r /dev/urandom
 fi
