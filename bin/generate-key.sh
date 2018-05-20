@@ -6,6 +6,7 @@ TYPE=signature
 COMMENT=''
 PURPOSE='General purpose'
 CONFIRM=false
+VIRTUAL=false
 
 usage()
 {
@@ -29,6 +30,10 @@ while true; do
             ;;
         --confirm)
             CONFIRM=true
+            shift
+            ;;
+        --virtual)
+            VIRTUAL=true
             shift
             ;;
         *)
@@ -85,4 +90,15 @@ if [ "${CONFIRM}" = true ]; then
     fi
 fi
 
+if [ "${VIRTUAL}" = true ]; then
+    # Fails because
+    sudo apt-get --quiet 2 install rng-tools || true
+    sudo rngd -r /dev/urandom
+fi
+
 gpg --batch --gen-key "${SCRIPT_DIRECTORY}/../tmp/settings.txt"
+
+if [ "${VIRTUAL}" = true ]; then
+    sudo killall rngd
+    sudo apt-get --quiet 2 purge rng-tools
+fi
