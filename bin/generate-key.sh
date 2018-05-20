@@ -67,6 +67,7 @@ if [ ! -f "${SCRIPT_DIRECTORY}/../tmp/settings.txt" ]; then
     fi
 
     mkdir -p "${SCRIPT_DIRECTORY}/../tmp"
+    PASSPHRASE=$(pwgen 14 1)
     echo "Key-Type: RSA
 Key-Length: 2048
 Subkey-Type: RSA
@@ -75,7 +76,7 @@ Name-Real: ${REAL_NAME}
 Name-Comment: ${COMMENT}
 Name-Email: ${EMAIL}
 Expire-Date: 1y
-Passphrase: example" > "${SCRIPT_DIRECTORY}/../tmp/settings.txt"
+Passphrase: ${PASSPHRASE}" > "${SCRIPT_DIRECTORY}/../tmp/settings.txt"
 fi
 
 if [ "${CONFIRM}" = true ]; then
