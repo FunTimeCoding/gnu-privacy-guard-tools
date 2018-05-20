@@ -2,10 +2,10 @@
 
 KEY="${1}"
 
-if [ "${KEY}" = "" ]; then
+if [ "${KEY}" = '' ]; then
     echo "Usage: ${0} KEY"
 
     exit 1
 fi
 
-gpg2 --export-secret-keys --armor "${KEY}" > private.asc
+gpg --export-secret-keys --armor "${KEY}" > private.asc

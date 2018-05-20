@@ -2,7 +2,7 @@
 
 KEY="${1}"
 
-if [ "${KEY}" = "" ]; then
+if [ "${KEY}" = '' ]; then
     echo "Usage: ${0} KEY"
 
     exit 1
@@ -11,4 +11,4 @@ fi
 echo "Enter commands:"
 echo passwd
 echo save
-gpg2 --edit-key "${KEY}"
+gpg --edit-key "${KEY}"

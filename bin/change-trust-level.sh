@@ -3,7 +3,7 @@
 KEY="${1}"
 LEVEL="${2}"
 
-if [ "${KEY}" = "" ] || [ "${LEVEL}" = "" ]; then
+if [ "${KEY}" = '' ] || [ "${LEVEL}" = '' ]; then
     echo "Usage: ${0} KEY LEVEL"
 
     exit 1
@@ -14,4 +14,4 @@ echo trust
 echo "${LEVEL}"
 echo y
 echo quit
-gpg2 --edit-key "${KEY}"
+gpg --edit-key "${KEY}"
