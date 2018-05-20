@@ -61,6 +61,7 @@ if [ ! -f "${SCRIPT_DIRECTORY}/../tmp/settings.txt" ]; then
         fi
     fi
 
+    mkdir -p "${SCRIPT_DIRECTORY}/../tmp"
     echo "Key-Type: RSA
 Key-Length: 2048
 Subkey-Type: RSA
@@ -72,11 +73,8 @@ Expire-Date: 1y
 Passphrase: example" > "${SCRIPT_DIRECTORY}/../tmp/settings.txt"
 fi
 
-mkdir -p "${SCRIPT_DIRECTORY}/../tmp"
-cd "${SCRIPT_DIRECTORY}/../tmp"
-
 if [ "${CONFIRM}" = true ]; then
-    cat settings.txt
+    cat "${SCRIPT_DIRECTORY}/../tmp/settings.txt"
     echo "Continue? [y/N]"
     read -r READ
 
@@ -87,4 +85,4 @@ if [ "${CONFIRM}" = true ]; then
     fi
 fi
 
-gpg --batch --gen-key settings.txt
+gpg --batch --gen-key "${SCRIPT_DIRECTORY}/../tmp/settings.txt"
