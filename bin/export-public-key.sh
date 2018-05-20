@@ -1,11 +1,36 @@
 #!/bin/sh -e
 
+DIRECTORY=$(dirname "${0}")
+SCRIPT_DIRECTORY=$(cd "${DIRECTORY}" || exit 1; pwd)
+OUTPUT_FILE="public.asc"
+
+usage()
+{
+    echo "Usage: ${0} [--output-file OUTPUT_FILE] IDENTIFIER"
+    echo "Default output file: ${OUTPUT_FILE}"
+}
+
+# shellcheck source=/dev/null
+. "${SCRIPT_DIRECTORY}/../lib/gpg_tools.sh"
+
+while true; do
+    case ${1} in
+        --output-file)
+            OUTPUT_FILE=${2-}
+            shift 2
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
 IDENTIFIER="${1}"
 
 if [ "${IDENTIFIER}" = '' ]; then
-    echo "Usage: ${0} IDENTIFIER"
+    usage
 
     exit 1
 fi
 
-gpg --export --armor "${IDENTIFIER}" > public.asc
+gpg --export --armor "${IDENTIFIER}" > "${OUTPUT_FILE}"
