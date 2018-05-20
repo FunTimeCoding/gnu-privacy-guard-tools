@@ -72,8 +72,8 @@ Expire-Date: 1y
 Passphrase: example" > tmp/settings.txt
 fi
 
-mkdir -p tmp
-cd tmp
+mkdir -p "${SCRIPT_DIRECTORY}/../tmp"
+cd "${SCRIPT_DIRECTORY}/../tmp"
 
 if [ "${CONFIRM}" = true ]; then
     cat settings.txt
