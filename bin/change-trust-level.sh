@@ -1,10 +1,10 @@
 #!/bin/sh -e
 
-KEY="${1}"
+IDENTIFIER="${1}"
 LEVEL="${2}"
 
-if [ "${KEY}" = '' ] || [ "${LEVEL}" = '' ]; then
-    echo "Usage: ${0} KEY LEVEL"
+if [ "${IDENTIFIER}" = '' ] || [ "${LEVEL}" = '' ]; then
+    echo "Usage: ${0} IDENTIFIER LEVEL"
 
     exit 1
 fi
@@ -14,4 +14,4 @@ echo trust
 echo "${LEVEL}"
 echo y
 echo quit
-gpg --edit-key "${KEY}"
+gpg --edit-key "${IDENTIFIER}"

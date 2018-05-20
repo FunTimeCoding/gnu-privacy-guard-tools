@@ -4,10 +4,10 @@
 
 This section explains how to use this project.
 
-Run the main program.
+Generate a key.
 
 ```sh
-bin/gpgt
+bin/generate-key.sh --type signature --purpose Example
 ```
 
 

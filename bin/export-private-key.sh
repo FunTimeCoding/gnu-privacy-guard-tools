@@ -1,11 +1,11 @@
 #!/bin/sh -e
 
-KEY="${1}"
+IDENTIFIER="${1}"
 
-if [ "${KEY}" = '' ]; then
-    echo "Usage: ${0} KEY"
+if [ "${IDENTIFIER}" = '' ]; then
+    echo "Usage: ${0} IDENTIFIER"
 
     exit 1
 fi
 
-gpg --export-secret-keys --armor "${KEY}" > private.asc
+gpg --export-secret-keys --armor "${IDENTIFIER}" > private.asc

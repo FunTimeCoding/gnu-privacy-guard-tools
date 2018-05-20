@@ -1,9 +1,9 @@
 #!/bin/sh -e
 
-KEY="${1}"
+IDENTIFIER="${1}"
 
-if [ "${KEY}" = '' ]; then
-    echo "Usage: ${0} KEY"
+if [ "${IDENTIFIER}" = '' ]; then
+    echo "Usage: ${0} IDENTIFIER"
 
     exit 1
 fi
@@ -11,4 +11,4 @@ fi
 echo "Enter commands:"
 echo passwd
 echo save
-gpg --edit-key "${KEY}"
+gpg --edit-key "${IDENTIFIER}"
