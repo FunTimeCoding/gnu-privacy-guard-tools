@@ -72,6 +72,7 @@ Expire-Date: 1y
 Passphrase: example" > tmp/settings.txt
 fi
 
+mkdir -p tmp
 cd tmp
 
 if [ "${CONFIRM}" = true ]; then
