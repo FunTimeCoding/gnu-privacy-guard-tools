@@ -2,7 +2,7 @@
 
 DIRECTORY=$(dirname "${0}")
 SCRIPT_DIRECTORY=$(cd "${DIRECTORY}" || exit 1; pwd)
-OUTPUT_FILE="public.asc"
+OUTPUT_FILE="${SCRIPT_DIRECTORY}/../tmp/public.asc"
 
 usage()
 {
@@ -33,4 +33,11 @@ if [ "${IDENTIFIER}" = '' ]; then
     exit 1
 fi
 
+if [ -f "${OUTPUT_FILE}" ]; then
+    echo "Output file already exists."
+
+    exit 1
+fi
+
+mkdir -p tmp
 gpg --export --armor "${IDENTIFIER}" > "${OUTPUT_FILE}"

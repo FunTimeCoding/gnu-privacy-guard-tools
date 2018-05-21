@@ -2,7 +2,7 @@
 
 DIRECTORY=$(dirname "${0}")
 SCRIPT_DIRECTORY=$(cd "${DIRECTORY}" || exit 1; pwd)
-OUTPUT_FILE="private.asc"
+OUTPUT_FILE="${SCRIPT_DIRECTORY}/../tmp/private.asc"
 INTERACTIVE=false
 PASSPHRASE_FILE=''
 
@@ -44,8 +44,18 @@ if [ "${IDENTIFIER}" = '' ]; then
     exit 1
 fi
 
+if [ -f "${OUTPUT_FILE}" ]; then
+    echo "Output file already exists."
+
+    exit 1
+fi
+
+mkdir -p tmp
+touch "${OUTPUT_FILE}"
+chmod 600 "${OUTPUT_FILE}"
+
 if [ "${INTERACTIVE}" = true ]; then
-    gpg --export-secret-keys --armor "${IDENTIFIER}" > private.asc
+    gpg --export-secret-keys --armor "${IDENTIFIER}" > "${OUTPUT_FILE}"
 else
     if [ "${PASSPHRASE_FILE}" = '' ]; then
         usage
@@ -53,7 +63,5 @@ else
         exit 1
     fi
 
-    touch "${OUTPUT_FILE}"
-    chmod 600 "${OUTPUT_FILE}"
     gpg --batch --passphrase-fd 1 --passphrase-file "${PASSPHRASE_FILE}" --pinentry-mode loopback --export-secret-key --armor "${IDENTIFIER}" > "${OUTPUT_FILE}"
 fi
