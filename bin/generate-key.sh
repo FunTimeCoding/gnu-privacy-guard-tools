@@ -67,6 +67,8 @@ if [ ! -f "${SCRIPT_DIRECTORY}/../tmp/settings.txt" ]; then
     fi
 
     mkdir -p "${SCRIPT_DIRECTORY}/../tmp"
+    touch "${SCRIPT_DIRECTORY}/../tmp/settings.txt"
+    chmod 600 "${SCRIPT_DIRECTORY}/../tmp/settings.txt"
     PASSPHRASE=$(pwgen 14 1)
     echo "Key-Type: RSA
 Key-Length: 2048

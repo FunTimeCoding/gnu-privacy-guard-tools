@@ -53,5 +53,7 @@ else
         exit 1
     fi
 
+    touch "${OUTPUT_FILE}"
+    chmod 600 "${OUTPUT_FILE}"
     gpg --batch --passphrase-fd 1 --passphrase-file "${PASSPHRASE_FILE}" --pinentry-mode loopback --export-secret-key --armor "${IDENTIFIER}" > "${OUTPUT_FILE}"
 fi
