@@ -1,2 +1,9 @@
-build
-tmp
+/build
+/tmp
+/.vagrant
+/debian/files
+/debian/debhelper-build-stamp
+/debian/gnu-privacy-guard-tools
+/debian/gnu-privacy-guard-tools.substvars
+/documentation/man/*.1
+/.scannerwork
